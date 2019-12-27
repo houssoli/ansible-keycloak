@@ -1,0 +1,9 @@
+/subsystem=keycloak-server/spi=truststore:add
+
+/subsystem=keycloak-server/spi=truststore/provider=file:add(enabled=true)
+
+/subsystem=keycloak-server/spi=truststore/provider=file/:map-put(name=properties,key=file, value={{ keycloak_truststore_location }})
+
+/subsystem=keycloak-server/spi=truststore/provider=file/:map-put(name=properties,key=password, value={{ keycloak_truststore_password }})
+
+/subsystem=keycloak-server/spi=truststore/provider=file/:map-put(name=properties,key=hostname-verification-policy, value="WILDCARD")

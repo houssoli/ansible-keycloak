@@ -138,6 +138,11 @@ To configure keycloak to use an external postgresql database, set the following 
 `db_user`: Specify user to use to authenticate to postgresql (optional, default is keycloak).
 `db_password`: Specify user's password to use to authenticate to postgresql (optional, default is password).
 `jdbc_params` : Specific (optional) settings for example `connectTimeout=30` 
+
+To configure keycloak to use an external truststore, set the following variables:
+`keycloak_truststore_location`: Specify the location of the truststore. (Settings for example `/opt/keystore.jks`)
+`keycloak_truststore_password`: Specify truststore's password.
+
 ## Testing
 
 In-tree tests are provided that use molecule to test the role against

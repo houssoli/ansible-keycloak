@@ -313,6 +313,13 @@
   tags:
   - postgresql
 
+- name: Add truststore for Keycloak
+  become: yes
+  include: keycloak_add_truststore.yml
+  when: keycloak_truststore_password is defined
+  tags:
+  - truststore
+
 - name: create Keycloak admin user
   command:
   args:
