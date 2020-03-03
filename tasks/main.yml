@@ -40,9 +40,9 @@
 
     - name: set the python interpreter to use on the target
       #TODO Fix python 3 issue on CentOS Linux release 7.6.1810:
-      #import_tasks: "{{ role_path }}/tasks/python_2_3_test.yml"
-      set_fact:
-        ansible_python_interpreter: "/usr/bin/python2"
+      import_tasks: "{{ role_path }}/tasks/python_2_3_test.yml"
+      # set_fact:
+      #   ansible_python_interpreter: "/usr/bin/python2"
 
     - name: create local download location
       become: False
@@ -58,7 +58,7 @@
       loop:
         - java-1.8.0-openjdk-headless
         - unzip
-        - pyOpenSSL
+        - "{{ python3-pyOpenSSL if ansible_python_interpreter == '/usr/bin/python3' else pyOpenSSL }}"
       become: yes
 
     - name: create Keycloak service user/group
